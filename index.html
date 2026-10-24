@@ -76,11 +76,16 @@ nav.top .links a:hover{opacity:1;}
 /* ═══ 2. 案例区：滚动放大堆叠 ═══ */
 #cases .stack{position:relative;}
 #cases .panel{position:sticky;top:0;height:100svh;overflow:hidden;will-change:transform;
-  padding:clamp(10px,1.6vh,18px);}
-.case-card{width:100%;height:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:clamp(14px,2.4vh,26px);}
+.case-card{width:100%;height:100%;background:var(--card);border:1.5px solid rgba(20,20,20,.28);border-radius:14px;
+  box-shadow:0 18px 60px rgba(20,20,20,.12);
   overflow:hidden;display:grid;grid-template-columns:7fr 5fr;}
 .case-cover{position:relative;overflow:hidden;background:#F4F4F2;height:100%;}
-.case-cover img{width:100%;height:100%;object-fit:cover;}
+.case-cover img{width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease);}
+@media (min-width:821px) and (hover:hover){
+  .panel:hover .case-cover img{transform:scale(1.05);}
+}
 .case-body{padding:clamp(24px,4vw,72px);display:flex;flex-direction:column;justify-content:center;overflow:auto;}
 .case-idx{font-family:var(--serif);font-size:15px;color:var(--muted);letter-spacing:.08em;}
 .case-title{font-family:var(--serif);font-size:clamp(26px,2vw + 2.6vh,44px);color:var(--ink);margin-top:10px;}
@@ -97,6 +102,15 @@ nav.top .links a:hover{opacity:1;}
 .btn.solid:hover{background:transparent;color:var(--ink);}
 .btn.ghost{color:var(--ink);}
 .btn.ghost:hover{background:var(--ink);color:var(--bg);}
+
+/* 案例面板底部提示：页码 + 进度细线，告诉用户还能往下滑 */
+.panel-hint{position:absolute;left:clamp(28px,4vw,56px);bottom:clamp(18px,3vh,34px);
+  display:flex;align-items:center;gap:14px;z-index:5;pointer-events:none;}
+.ph-idx{font-family:var(--serif);font-size:14px;color:var(--ink);letter-spacing:.08em;}
+.ph-bar{width:120px;height:2px;background:rgba(20,20,20,.12);border-radius:99px;overflow:hidden;}
+.ph-bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .2s linear;}
+.ph-more{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  animation:bob 2.4s var(--ease) infinite;}
 
 /* ═══ 3. 模板区：作品集商店 ═══ */
 #templates{padding:clamp(80px,12vh,140px) 0;}
@@ -238,7 +252,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
   <div class="stack">
     <article class="panel">
       <div class="case-card">
-        <div class="case-cover"><img src="assets/vera-portrait.jpg" alt="Vera Lin 人像"></div>
+        <div class="case-cover"><img src="assets/shot-vera.jpg" alt="Vera Lin 个人站首页截图"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 01</span>
           <h2 class="case-title">Vera Lin</h2>
@@ -251,6 +265,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
           </div>
         </div>
       </div>
+      <div class="panel-hint"><span class="ph-idx mono">01 / 05</span><span class="ph-bar"><i></i></span><span class="ph-more">继续下滑 ↓</span></div>
     </article>
     <article class="panel">
       <div class="case-card">
@@ -266,6 +281,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
           </div>
         </div>
       </div>
+      <div class="panel-hint"><span class="ph-idx mono">02 / 05</span><span class="ph-bar"><i></i></span></div>
     </article>
     <article class="panel">
       <div class="case-card">
@@ -281,6 +297,39 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
           </div>
         </div>
       </div>
+      <div class="panel-hint"><span class="ph-idx mono">03 / 05</span><span class="ph-bar"><i></i></span></div>
+    </article>
+    <article class="panel">
+      <div class="case-card">
+        <div class="case-cover"><img src="assets/shot-card.jpg" alt="陆一舟 数字名片"></div>
+        <div class="case-body">
+          <span class="case-idx mono">Case — 04</span>
+          <h2 class="case-title">陆一舟</h2>
+          <p class="case-cn">数字名片 · 摄影师单屏名片</p>
+          <p class="case-desc">单屏黑底大字名片：衬线巨字姓名、身份标签胶囊、底部三栏联系方式。一屏说清"我是谁、怎么找到我"，扫码即达，手机体验极佳。</p>
+          <div class="case-tags"><span>数字名片</span><span>单屏</span><span>大字排版</span></div>
+          <div class="case-links">
+            <a class="btn solid" href="card/index.html">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-hint"><span class="ph-idx mono">04 / 05</span><span class="ph-bar"><i></i></span></div>
+    </article>
+    <article class="panel">
+      <div class="case-card">
+        <div class="case-cover"><img src="assets/shot-landing.jpg" alt="拾光香氛 轻落地页"></div>
+        <div class="case-body">
+          <span class="case-idx mono">Case — 05</span>
+          <h2 class="case-title">拾光香氛</h2>
+          <p class="case-cn">轻落地页 · 手工蜡烛品牌</p>
+          <p class="case-desc">奶油底单页落地：纯 CSS 手绘蜡烛火苗动画、卖点三栏、产品定价卡与客户证言，一页完成"种草到下单"，体积极轻、上线即用。</p>
+          <div class="case-tags"><span>轻落地页</span><span>电商引导</span><span>CSS 动画</span></div>
+          <div class="case-links">
+            <a class="btn solid" href="landing/index.html">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-hint"><span class="ph-idx mono">05 / 05</span><span class="ph-bar"><i></i></span></div>
     </article>
   </div>
 </section>
@@ -294,7 +343,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="tpl-thumb t1">CARD / 01</div>
         <p class="tpl-name">数字名片</p>
         <p class="tpl-desc">单屏大字排版，社交链接即改即用，扫码即达。</p>
-        <div class="tpl-price"><b>¥ 9.9</b><span class="tpl-status">Coming Soon</span></div>
+        <div class="tpl-price"><b>¥ 9.9</b><a class="tpl-status" href="card/index.html" style="color:var(--ink);border-bottom:1px solid var(--ink);">Live Demo ↗</a></div>
       </div>
       <div class="tpl-card reveal" style="--i:1">
         <div class="tpl-thumb t2">FOLIO / 02</div>
@@ -306,7 +355,7 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="tpl-thumb t3">LANDING / 03</div>
         <p class="tpl-name">轻落地页</p>
         <p class="tpl-desc">单页三段式：卖点、证明、行动按钮，上线即用。</p>
-        <div class="tpl-price"><b>¥ 19</b><span class="tpl-status">Coming Soon</span></div>
+        <div class="tpl-price"><b>¥ 19</b><a class="tpl-status" href="landing/index.html" style="color:var(--ink);border-bottom:1px solid var(--ink);">Live Demo ↗</a></div>
       </div>
       <div class="tpl-card reveal" style="--i:3">
         <div class="tpl-thumb t4">STAY / 04</div>
@@ -433,6 +482,11 @@ if (!reduced) {
       }
       p.style.transform = `scale(${scale.toFixed(4)})`;
       p.style.filter = `brightness(${bright.toFixed(3)})`;
+      const bar = p.querySelector(".ph-bar i");
+      if (bar) {
+        const start = vh - r.top, total = vh + r.height;
+        bar.style.width = Math.min(Math.max(start / total, 0), 1) * 100 + "%";
+      }
     });
     ticking = false;
   };
