@@ -75,18 +75,18 @@ nav.top .links a:hover{opacity:1;}
 
 /* ═══ 2. 案例区：滚动放大堆叠 ═══ */
 #cases .stack{position:relative;}
-#cases .panel{position:sticky;top:0;height:100svh;display:flex;align-items:center;justify-content:center;
-  padding:clamp(16px,3vh,40px) clamp(16px,4vw,64px);will-change:transform;}
-.case-card{width:min(1100px,100%);background:var(--card);border:1px solid var(--line);border-radius:12px;
-  overflow:hidden;display:grid;grid-template-columns:7fr 5fr;box-shadow:0 24px 80px rgba(20,20,20,.10);}
-.case-cover{position:relative;overflow:hidden;background:#F4F4F2;min-height:320px;}
+#cases .panel{position:sticky;top:0;height:100svh;overflow:hidden;will-change:transform;}
+.case-card{width:100%;height:100svh;background:var(--card);
+  overflow:hidden;display:grid;grid-template-columns:7fr 5fr;}
+.case-cover{position:relative;overflow:hidden;background:#F4F4F2;height:100%;}
 .case-cover img{width:100%;height:100%;object-fit:cover;}
-.case-body{padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;}
+.case-body{padding:clamp(24px,4vw,72px);display:flex;flex-direction:column;justify-content:center;overflow:auto;}
 .case-idx{font-family:var(--serif);font-size:15px;color:var(--muted);letter-spacing:.08em;}
 .case-title{font-family:var(--serif);font-size:clamp(30px,3.4vw,46px);color:var(--ink);margin-top:10px;}
 .case-cn{font-family:var(--song);font-weight:600;font-size:15px;color:var(--title);margin-top:6px;letter-spacing:.06em;}
 .case-desc{margin-top:clamp(14px,2vh,24px);font-size:14px;line-height:1.8;color:var(--title);max-width:32em;}
-.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:clamp(16px,2vh,28px);}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(18px,3vh,32px);}
+.case-links{margin-top:clamp(14px,2vh,22px);}
 .case-tags span{font-size:11px;letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);
   border-radius:99px;padding:6px 14px;}
 .case-links{display:flex;gap:12px;margin-top:clamp(16px,2vh,24px);}
@@ -156,6 +156,17 @@ nav.top .links a:hover{opacity:1;}
 .c-row:hover{transform:translateX(8px);}
 .c-k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);}
 .c-v{font-size:15px;color:var(--bg);}
+.contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(32px,5vw,80px);align-items:start;}
+.qr-card{background:var(--bg);color:var(--ink);padding:22px;border-radius:10px;text-align:center;
+  display:inline-block;transition:transform var(--t-base) var(--ease);}
+.qr-card:hover{transform:translateY(-4px);}
+.qr-card img{width:150px;height:150px;margin:0 auto 10px;border-radius:6px;}
+.qr-card p{font-size:12px;color:var(--title);margin:0;}
+.contact-btn{display:inline-block;margin-top:18px;background:var(--bg);color:var(--ink);
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  padding:16px 42px;border-radius:6px;border:1px solid var(--bg);
+  transition:all var(--t-base) var(--ease);cursor:pointer;}
+.contact-btn:hover{background:transparent;color:var(--bg);}
 
 /* ── 页脚（GEO 身份声明，保持中文不翻译）── */
 footer{padding:40px 0;border-top:1px solid var(--line);}
@@ -165,8 +176,9 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
 
 /* ── 移动端 ── */
 @media (max-width:820px){
-  .case-card{grid-template-columns:1fr;}
-  .case-cover{min-height:220px;}
+  .case-card{grid-template-columns:1fr;grid-template-rows:36% 1fr;}
+  .case-cover{min-height:0;}
+  .case-body{padding:20px;}
   .tpl-grid,.step-grid,.tier-grid{grid-template-columns:1fr 1fr;}
   nav.top .links{gap:14px;}
   .faq-a{padding-left:0;}
@@ -348,10 +360,20 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
     <p class="sec-tag reveal" style="--i:0">Contact · 联系</p>
     <h2 class="en-display contact-title reveal" style="--i:1">Let's build <em>yours.</em></h2>
     <p class="contact-cn reveal" style="--i:2">把你的想法发给我，48 小时内回复。新项目仅周末接单，先聊清楚再动手。</p>
-    <div class="contact-rows reveal" style="--i:3">
-      <div class="c-row"><span class="c-k">WeChat</span><span class="c-v">shayna-studio（备注「接单」）</span></div>
-      <div class="c-row"><span class="c-k">Reply</span><span class="c-v">48 小时内回复 · 新项目仅周末接</span></div>
-      <div class="c-row"><span class="c-k">Scope</span><span class="c-v">个人官网 / 产品宣传页 / 商家落地页 / 移动端页面</span></div>
+    <div class="contact-grid">
+      <div class="contact-rows reveal" style="--i:3">
+        <div class="c-row"><span class="c-k">WeChat</span><span class="c-v">shayna-studio（备注「接单」）</span></div>
+        <div class="c-row"><span class="c-k">Reply</span><span class="c-v">48 小时内回复 · 新项目仅周末接</span></div>
+        <div class="c-row"><span class="c-k">Scope</span><span class="c-v">个人官网 / 产品宣传页 / 商家落地页 / 移动端页面</span></div>
+      </div>
+      <div class="reveal" style="--i:3">
+        <div class="qr-card">
+          <img src="assets/qr-demo.png" width="150" height="150" alt="微信二维码">
+          <p>扫码加微信 · 备注「接单」</p>
+        </div>
+        <br>
+        <button class="contact-btn" id="copyWx" type="button">Book a call ↗</button>
+      </div>
     </div>
   </div>
 </section>
@@ -396,7 +418,7 @@ if (!reduced) {
       const r = p.getBoundingClientRect();
       let scale = 1, bright = 1;
       if (r.top > 0) {
-        scale = 0.86 + (1 - Math.min(r.top / vh, 1)) * 0.14;
+        scale = 0.80 + (1 - Math.min(r.top / vh, 1)) * 0.20;
       } else if (r.bottom > vh) {
         const gone = Math.min(-r.top / vh, 1);
         scale = 1 - gone * 0.03;
@@ -413,6 +435,16 @@ if (!reduced) {
     requestAnimationFrame(update);
   }, {passive:true});
   update();
+}
+
+/* 点 Book a call：复制微信号 */
+const wxBtn = document.getElementById("copyWx");
+if (wxBtn) {
+  wxBtn.addEventListener("click", () => {
+    const done = () => { wxBtn.textContent = "Copied ✓ 微信号已复制"; setTimeout(() => wxBtn.textContent = "Book a call ↗", 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText("shayna-studio").then(done, done);
+    else done();
+  });
 }
 </script>
 </body>
