@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鎏白 LIUBAI — Silver, Softly</title>
+<meta name="description" content="鎏白 LIUBAI，杭州独立银饰工作室。手工小批量 925 银，支持刻字。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400&family=Noto+Serif+SC:wght@600&family=Noto+Sans+SC:wght@300;400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F7F4; --ink:#161513; --gray:#9A968E; --wine:#7A2230; --dark:#0A0A09;
+  --line:rgba(22,21,19,.14);
+  --serif:'Playfair Display','Didot','Songti SC','Noto Serif SC',serif;
+  --disp:'Helvetica Neue','Neue Haas Grotesk Display','Arial','PingFang SC','Microsoft YaHei',sans-serif;
+  --sans:'Inter','PingFang SC','Noto Sans SC',sans-serif;
+  --mono:'IBM Plex Mono','Menlo',monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--wine);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;background:none;border:none}
+
+.noise{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ═══ 进度 / 索引 ═══ */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--wine);z-index:80}
+#dots{position:fixed;right:clamp(14px,2vw,30px);top:50%;transform:translateY(-50%);z-index:60;
+  display:flex;flex-direction:column;gap:16px}
+#dots a{width:22px;height:1px;background:var(--gray);opacity:.3;transition:.4s}
+#dots a.on{opacity:1;width:36px;background:var(--wine)}
+@media (max-width:860px){#dots{display:none}}
+
+/* ═══ 导航 ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;justify-content:space-between;
+  align-items:center;padding:20px clamp(20px,4vw,56px);
+  background:rgba(247,247,244,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;transition:border-color .4s}
+nav.scrolled{border-color:var(--line)}
+nav .logo{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:.14em;color:var(--wine)}
+nav .links{display:flex;gap:26px}
+nav .links a{font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.72;transition:.3s;position:relative}
+nav .links a::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;
+  background:var(--wine);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+nav .links a:hover::after{transform:scaleX(1);transform-origin:left}
+nav .links a:hover{opacity:1;color:var(--wine)}
+
+/* ═══ Hero：主理人肖像封面 ═══ */
+#hero{position:relative;min-height:100vh;overflow:hidden}
+#hero .h-img{position:absolute;inset:0;overflow:hidden}
+#hero .h-img img{width:100%;height:100%;object-fit:cover;object-position:center 42%;
+  transform:scale(1.02);transition:transform 2.4s var(--ease)}
+body.loaded #hero .h-img img{transform:scale(1)}
+#hero .h-veil{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(247,247,244,.97) 0%,rgba(247,247,244,.82) 22%,rgba(247,247,244,0) 50%)}
+#hero .h-txt{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:0 0 clamp(48px,9vh,100px) clamp(20px,4.5vw,64px);max-width:520px}
+#hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(54px,8vw,112px);line-height:1.02}
+#hero h1 .ln{display:block;overflow:hidden}
+#hero h1 .ch{display:inline-block;transform:translateY(110%);transition:transform 1s var(--ease)}
+#hero h1 em{font-style:italic;font-weight:500;color:var(--wine)}
+body.loaded #hero h1 .ch{transform:none}
+#hero .zh{margin-top:16px;font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;
+  font-size:clamp(16px,1.7vw,21px);letter-spacing:.34em;color:#514c45;
+  opacity:0;transition:opacity 1s ease .9s}
+body.loaded #hero .zh{opacity:1}
+#hero .disc{margin-top:30px;display:inline-flex;width:fit-content;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--wine);
+  border-bottom:1px solid var(--wine);padding-bottom:8px;opacity:0;transition:opacity 1s ease 1.1s,gap .3s}
+body.loaded #hero .disc{opacity:1}
+#hero .disc:hover{gap:22px}
+#hero .meta{position:absolute;right:clamp(20px,4vw,56px);top:clamp(90px,14vh,130px);z-index:2;
+  font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#fff;text-align:right;line-height:2.1;
+  text-shadow:0 1px 14px rgba(22,21,19,.55);opacity:0;transition:opacity 1s ease 1.2s}
+body.loaded #hero .meta{opacity:1}
+
+/* ═══ 跑马灯 ═══ */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:14px 0}
+.marquee .track{display:flex;width:max-content;animation:mq 26s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:.14em;
+  color:var(--gray);padding:0 28px;white-space:nowrap}
+.marquee span i{font-style:normal;color:var(--wine);padding-right:56px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ═══ Selected work：huyml 式展示 · 白底杂志风 ═══ */
+.work{height:1200vh;background:var(--bg);color:var(--ink);position:relative}
+.w-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
+  padding:clamp(60px,8vh,88px) clamp(20px,4.5vw,64px) 0;overflow:hidden}
+.w-label{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--ink);text-transform:uppercase}
+.w-main{flex:1;display:grid;grid-template-columns:.8fr auto 1fr;grid-template-rows:minmax(0,1fr);
+  align-items:center;gap:clamp(20px,4vw,70px);min-height:0;padding-bottom:clamp(30px,6vh,70px)}
+/* 左：meta（huyml 式 Role/Launch/Recognition） */
+.w-meta{display:flex;flex-direction:column;gap:clamp(16px,2.6vh,26px);margin-bottom:12vh}
+.w-m-row span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.3em;
+  color:var(--gray);text-transform:uppercase;margin-bottom:7px}
+.w-m-row b{font-family:var(--disp);font-weight:500;font-size:16px;
+  letter-spacing:.06em;color:var(--ink)}
+.w-m-row b i{font-style:normal;font-family:var(--mono);font-size:9.5px;color:var(--wine);margin-left:10px;letter-spacing:.12em}
+/* 中：正方形主图 + 下方详情条（红框位） */
+.w-center{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(14px,2.4vh,26px);min-height:0}
+.w-deck{position:relative;width:min(48vh,30vw);aspect-ratio:1/1;perspective:1400px}
+.w-deck img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border:1px solid #E3E0D8;background:#fff;
+  box-shadow:0 34px 80px rgba(22,21,19,.18);
+  transition:transform .9s var(--ease),opacity .9s var(--ease),scale .6s var(--ease);
+  will-change:transform;cursor:pointer}
+.w-deck img:hover{scale:1.04}
+.w-detail{min-height:54px;opacity:0;transition:opacity .6s var(--ease);
+  font-size:13px;line-height:2;color:#4a463f;max-width:400px;text-align:center}
+.w-detail.show{opacity:1}
+/* 右：项目列表（未轮到的更灰，只留品类+名称） */
+.w-list{position:relative;display:flex;flex-direction:column;gap:clamp(10px,1.9vh,19px);
+  align-items:center;text-align:center;height:100%;overflow:hidden;
+  transition:transform .7s var(--ease);will-change:transform}
+.w-item{width:100%;opacity:.16;transition:opacity .55s var(--ease)}
+.w-item.on{opacity:1}
+.w-item .w-cat{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gray);margin-bottom:5px}
+.w-item .w-name{font-family:var(--disp);font-weight:600;font-size:clamp(17px,2vw,27px);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--gray);transition:color .5s}
+.w-item .w-name::after{content:"—";display:block;font-family:var(--mono);font-weight:400;
+  font-size:12px;letter-spacing:.3em;margin:9px 0 0;opacity:.55}
+.w-item.on .w-name{color:var(--ink)}
+/* 左下角：标签 + 滚动提示 */
+.w-corner{position:absolute;left:clamp(20px,4.5vw,64px);bottom:clamp(18px,3vh,30px);z-index:5;
+  display:flex;flex-direction:column;gap:12px}
+.w-hint{font-family:var(--mono);font-size:9px;letter-spacing:.28em;color:var(--gray)}
+/* 右下圆圈位：大数字 */
+.w-counter{position:absolute;right:clamp(20px,4.5vw,64px);bottom:clamp(14px,2.5vh,28px);z-index:5;
+  display:flex;align-items:flex-end;gap:14px}
+.w-counter .big{font-family:var(--serif);font-style:normal;font-weight:700;
+  font-size:clamp(90px,17vh,170px);line-height:.82;color:var(--ink);letter-spacing:-.02em}
+.w-counter .total{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gray);margin-bottom:18px}
+.w-hint{position:absolute;right:clamp(20px,4.5vw,64px);bottom:clamp(24px,4vh,44px);
+  font-family:var(--mono);font-size:9px;letter-spacing:.28em;color:var(--gray)}
+/* ═══ 主理人 ═══ */
+#muse{display:grid;grid-template-columns:5fr 6fr}
+#muse .m-img{overflow:hidden;min-height:76vh}
+#muse .m-img img{width:100%;height:112%;object-fit:cover;margin-top:-6%}
+#muse .m-txt{padding:clamp(60px,10vh,130px) clamp(28px,5vw,90px);
+  display:flex;flex-direction:column;justify-content:center}
+#muse .no{font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--wine);margin-bottom:24px}
+#muse .qln{overflow:hidden}
+#muse .qln p{font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;
+  font-size:clamp(23px,2.9vw,36px);line-height:1.6;transform:translateY(105%);transition:transform 1.1s var(--ease)}
+#muse.in .qln p{transform:none}
+#muse .who{margin-top:30px;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--gray)}
+#muse .m-body{margin-top:26px;font-size:14px;line-height:2.1;color:#4a463f;max-width:430px}
+
+/* ═══ 工艺 ═══ */
+#craft{position:relative;min-height:96vh;margin-top:clamp(70px,12vh,130px);display:flex;align-items:flex-end;overflow:hidden}
+#craft .bg{position:absolute;inset:0}
+#craft .bg img{width:100%;height:114%;object-fit:cover;margin-top:-7%}
+#craft .veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(22,21,19,.58))}
+#craft .c-inner{position:relative;z-index:2;width:100%;padding:0 clamp(20px,4.5vw,64px) clamp(48px,9vh,96px);color:#fff}
+#craft h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.4vw,54px)}
+#craft h2 em{font-style:italic}
+#craft .credits{margin-top:26px;display:flex;gap:clamp(24px,4vw,70px);flex-wrap:wrap}
+#craft .cd{border-top:1px solid rgba(255,255,255,.35);padding-top:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;line-height:2;color:#e7e5df}
+#craft .num{font-family:var(--serif);font-size:clamp(30px,3.4vw,44px);font-style:italic;display:block;line-height:1.3}
+
+/* ═══ 订制三档：杂志行式 ═══ */
+#bespoke{padding:clamp(90px,14vh,160px) clamp(20px,4.5vw,64px);border-top:1px solid var(--line)}
+.b-row{display:grid;grid-template-columns:120px 1fr auto;gap:clamp(20px,3.4vw,54px);
+  align-items:center;border-top:1px solid var(--line);padding:clamp(26px,4vh,42px) 0;
+  transition:background .5s var(--ease)}
+.b-row:last-child{border-bottom:1px solid var(--line)}
+.b-row:hover{background:#EFECE4}
+.b-row .b-thumb{width:120px;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);
+  transition:transform .7s var(--ease)}
+.b-row:hover .b-thumb{transform:scale(1.05) rotate(-1.5deg)}
+.b-row .b-no{font-family:var(--mono);font-size:9px;letter-spacing:.3em;color:var(--wine);margin-bottom:10px}
+.b-row h3{font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;
+  font-size:clamp(21px,2.4vw,30px);letter-spacing:.06em;margin-bottom:8px}
+.b-row .b-desc{font-size:13px;line-height:1.9;color:#4a463f;max-width:520px}
+.b-price{text-align:right}
+.b-price .n{font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:clamp(26px,3vw,40px);display:block;line-height:1}
+.b-price small{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--gray);
+  display:block;margin-top:10px}
+
+/* ═══ 流程 + FAQ ═══ */
+#process{padding:clamp(90px,14vh,150px) clamp(20px,4.5vw,64px);border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,90px)}
+#process h2{font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;font-size:clamp(24px,2.8vw,34px);margin-bottom:14px}
+.steps{display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,44px);align-items:baseline;
+  padding:30px 0;border-top:1px solid var(--line);transition:padding .5s var(--ease)}
+.step:first-child{margin-top:14px}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step:hover{padding-left:14px}
+.step .s-no{font-family:var(--serif);font-style:italic;font-size:clamp(34px,3.6vw,48px);color:var(--wine);line-height:1;min-width:1.5em}
+.step p{font-size:14px;line-height:2;color:#3c3833}
+.step p b{font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;font-size:16px;display:block;margin-bottom:6px;letter-spacing:.04em}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;
+  align-items:center;font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--wine);transition:transform .4s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;font-size:13.5px;line-height:2.1;color:#4a463f}
+
+/* ═══ 预约 · 暗色收尾大区块 ═══ */
+#visit{background:var(--ink);color:#ece7dd;padding:clamp(100px,16vh,180px) clamp(20px,4.5vw,64px);
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(44px,7vw,110px);align-items:center}
+#visit h2{font-family:'Noto Serif SC','Songti SC',serif;font-weight:600;font-size:clamp(30px,4.4vw,56px);color:#f4efe6;letter-spacing:.02em}
+#visit .v-body{margin-top:22px;font-size:14px;line-height:2.3;color:#b3ac9e;max-width:480px}
+#visit .v-mono{margin-top:28px;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:#c9a06a;line-height:2.4}
+#visit .v-img{position:relative}
+#visit .v-img>img{width:100%;height:min(62vh,540px);object-fit:cover;display:block;filter:saturate(.92)}
+#visit .qr{position:absolute;right:clamp(16px,2.5vw,36px);bottom:clamp(-44px,-4vw,-26px);
+  background:#fff;padding:14px 14px 10px;box-shadow:0 26px 60px rgba(0,0,0,.4);transition:transform .5s var(--ease)}
+#visit .qr:hover{transform:translateY(-6px)}
+#visit .qr img{width:110px;height:110px;display:block}
+#visit .qr p{margin-top:8px;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--gray);text-align:center}
+footer{background:var(--bg);border-top:1px solid var(--line);padding:40px clamp(20px,4.5vw,64px);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gray);text-transform:uppercase}
+
+/* ═══ 通用 ═══ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:860px){
+  #hero .h-img{inset:0}
+  #hero .h-txt{max-width:100%}
+  #hero h1{color:#fff}#hero h1 em{color:#e9c8ce}
+  #hero .h-veil{background:linear-gradient(90deg,rgba(247,247,244,.9),transparent 70%),
+    linear-gradient(0deg,rgba(22,21,19,.5),transparent 55%)}
+  #hero .meta{display:none}
+  /* huyml 式展示移动端：堆叠布局 */
+  .work{height:auto}
+  .w-sticky{position:relative;height:auto;padding:70px 20px;gap:30px}
+  .w-main{grid-template-columns:1fr;gap:26px;padding-bottom:0}
+  .w-deck{width:min(64vw,300px)}
+  .w-meta{flex-direction:row;flex-wrap:wrap;gap:16px 28px;margin-bottom:0}
+  .w-counter{position:static;margin-top:22px}
+  .w-counter .big{font-size:76px}
+  .w-corner{position:static;margin-top:14px}
+  .b-grid{grid-template-columns:1fr}
+  #process{grid-template-columns:1fr}
+  #muse{grid-template-columns:1fr}
+  #muse .m-img{min-height:52vh}
+  #visit{grid-template-columns:1fr;gap:56px}
+  #visit .v-img>img{height:52vh}
+  #visit .qr{bottom:-30px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal,.qln p,#hero h1 .ch{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- 入场动画已移除（直接进入页面） -->
+<div class="noise"></div>
+<div id="prog"></div>
+<div id="app">
+
+<div id="dots">
+  <a href="#hero" class="on"><span>HOME</span></a>
+  <a href="#showcase"><span>COLLECTION</span></a>
+  <a href="#muse"><span>MAKER</span></a>
+  <a href="#craft"><span>CRAFT</span></a>
+  <a href="#bespoke"><span>BESPOKE</span></a>
+  <a href="#visit"><span>VISIT</span></a>
+</div>
+
+<nav id="nav">
+  <a class="logo" href="#hero">LIUBAI 鎏白</a>
+  <div class="links">
+    <a href="#showcase">作品</a><a href="#muse">主理人</a>
+    <a href="#bespoke">订制</a><a href="#visit">[微信]</a>
+  </div>
+</nav>
+
+<!-- ═══ Hero：主理人肖像封面 ═══ -->
+<section id="hero">
+  <div class="h-img" id="heroImg"><img src="assets-v2/hero-bust.webp" alt="主理人白盐 · 银耳环头部特写"></div>
+  <div class="h-veil"></div>
+  <div class="h-txt">
+    <h1 id="heroTitle"></h1>
+    <p class="zh">银不喧哗，自有分量</p>
+    <a class="disc" href="#showcase">DISCOVER —</a>
+  </div>
+  <div class="meta">925 STERLING<br>HANDMADE · HANGZHOU<br>EST. 2021</div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="mq1"></div></div>
+
+<!-- ═══ 黑暗舞台 · 360° 旋转展示 ═══ -->
+<div class="work" id="showcase">
+  <div class="w-sticky">
+    <div class="w-main">
+      <div class="w-meta">
+        <div class="w-m-row"><span>Material — 材质</span><b id="mMat">925 银 · 锤纹</b></div>
+        <div class="w-m-row"><span>Lead time — 工期</span><b id="mLead">7 天<i>顺丰包邮</i></b></div>
+        <div class="w-m-row"><span>Care — 保养</span><b>终身免费翻新</b></div>
+        <div class="w-m-row"><span>Price — 价格</span><b id="mPrice">¥ 420</b></div>
+      </div>
+      <div class="w-center">
+        <div class="w-deck" id="deck"></div>
+        <p class="w-detail" id="wDetail"></p>
+      </div>
+      <div class="w-list" id="wList"></div>
+  </div>
+    <div class="w-corner">
+      <span class="w-label">Selected work — 二十件银器</span>
+      <span class="w-hint">SCROLL — 向下切换 · 订购 WECHAT: LIUBAI-SILVER</span>
+    </div>
+    <div class="w-counter"><span class="big" id="wNum">01</span><span class="total">/20</span></div>
+  </div>
+</div>
+
+<!-- ═══ 主理人 ═══ -->
+<section id="muse">
+  <div class="m-img"><img src="assets-v2/hero-magazine.webp" alt="主理人白盐 · 杂志风形象" class="px" data-px=".5"></div>
+  <div class="m-txt">
+    <p class="no reveal">THE MAKER — 白盐</p>
+    <div class="qln"><p>我不追款式。</p></div>
+    <div class="qln"><p>一枚戒指做七天，</p></div>
+    <div class="qln"><p>是你戴十年。</p></div>
+    <p class="who reveal">BAI YAN — FOUNDER & SILVERSMITH</p>
+    <p class="m-body reveal">美院金属工艺系毕业后，她在杭州城郊租下一间老厂房，只做银。
+    每一件都从一根银条开始：熔、锻、退火、锤纹、抛光，七天出货，终身免费翻新。</p>
+  </div>
+</section>
+
+<!-- ═══ 工艺 ═══ -->
+<section id="craft">
+  <div class="bg"><img src="assets-v2/ip-craft.webp" alt="铁砧上锻打银条" class="px" data-px=".35"></div>
+  <div class="veil"></div>
+  <div class="c-inner">
+    <h2 class="reveal"><em>Made Without</em> Compromise</h2>
+    <div class="credits">
+      <div class="cd reveal" style="--i:0"><span class="num" data-count="925">0</span>MATERIAL — STERLING SILVER</div>
+      <div class="cd reveal" style="--i:1"><span class="num" data-count="7">0</span>DAYS — LEAD TIME PER PIECE</div>
+      <div class="cd reveal" style="--i:2"><span class="num" data-count="100" data-suffix="%">0</span>LIFETIME — FREE REFINISH</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 订制三档 ═══ -->
+<section id="bespoke">
+  <div class="sec-head reveal">
+    <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,40px)">订制三档</h2>
+    <span class="mono" style="color:var(--gray)">BESPOKE — PRICES INCLUDE ENGRAVING BASE</span>
+  </div>
+  <div class="b-grid">
+    <div class="b-row reveal" style="--i:0">
+      <img class="b-thumb" src="assets-v2/prod-ring.webp" alt="单件订制">
+      <div>
+        <p class="b-no">TIER 01 — SINGLE</p>
+        <h3>单件订制</h3>
+        <p class="b-desc">现有款式任选，内圈手錾刻字（日期/名字/一句话），含首字免费。</p>
+      </div>
+      <div class="b-price"><span class="n">¥ 420 起</span><small>7 天出货 · 含刻字基础费</small></div>
+    </div>
+    <div class="b-row reveal" style="--i:1">
+      <img class="b-thumb" src="assets-v2/prod-ring2.webp" alt="对戒订制">
+      <div>
+        <p class="b-no">TIER 02 — PAIR</p>
+        <h3>对戒订制</h3>
+        <p class="b-desc">两只分开锻打、一同退火，纹路天然成对。支持双内圈刻字与隐藏记号。</p>
+      </div>
+      <div class="b-price"><span class="n">¥ 680 起</span><small>10 天出货 · 含双刻字</small></div>
+    </div>
+    <div class="b-row reveal" style="--i:2">
+      <img class="b-thumb" src="assets-v2/prod-bangle.webp" alt="手镯改圈">
+      <div>
+        <p class="b-no">TIER 03 — SIGNATURE</p>
+        <h3>手镯 / 改圈</h3>
+        <p class="b-desc">开口手镯内圈长文刻字，旧银改圈重锻，旧纹路全部保留。</p>
+      </div>
+      <div class="b-price"><span class="n">¥ 1,120 起</span><small>14 天出货 · 旧件重制另议</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 流程 + FAQ ═══ -->
+<section id="process">
+  <div class="reveal">
+    <h2>定制怎么开始</h2>
+    <div class="steps">
+      <div class="step"><p class="s-no">01</p><p><b>说想法</b>微信上把用途、预算、想刻的字说清楚，当天回。</p></div>
+      <div class="step"><p class="s-no">02</p><p><b>七天手作</b>熔银、锻打、錾刻、抛光，每天一张进度照片。</p></div>
+      <div class="step"><p class="s-no">03</p><p><b>顺丰包邮</b>木盒包装，终身免费翻新，戴旧了寄回来就好。</p></div>
+    </div>
+  </div>
+  <div class="faq reveal" style="--i:1">
+    <h2>两件常问的事</h2>
+    <details open>
+      <summary>可以在戒指上刻字吗？</summary>
+      <p>可以。手錾刻字，不是激光，笔画有轻微深浅。单个汉字/字母计一天工期，订制页价格已含首字。</p>
+    </details>
+    <details>
+      <summary>多久能拿到？</summary>
+      <p>单件 7 天，对戒 10 天，手镯与改圈 14 天。顺丰包邮，出屋前会发实物照片确认。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ═══ 预约 ═══ -->
+<section id="visit">
+  <div class="reveal">
+    <h2>来工作室试戴</h2>
+    <p class="v-body">只接受预约制。周五至周日开门，一客一壶茶，试戴不限时。
+    订制刻字请在到店前三天说，字是手錾的，一个字一天。</p>
+    <p class="v-mono">HOURS — FRI TO SUN 11:00–18:00<br>
+    WECHAT — LIUBAI-SILVER<br>HANGZHOU · 西湖区老厂房园区 3 号库</p>
+  </div>
+  <div class="v-img reveal" style="--i:1">
+    <img src="assets-v2/ip-hands.webp" alt="主理人银匠手作">
+    <div class="qr">
+      <img src="assets/qr-demo.png" alt="微信二维码">
+      <p>WECHAT — 扫码预约</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 LIUBAI 鎏白 · HANGZHOU</span>
+  <span>本页为设计演示 DEMO · PORTRAIT AI-GENERATED</span>
+  <span>INSTAGRAM — @LIUBAI.SILVER</span>
+</footer>
+
+</div><!-- /app -->
+
+<script>
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+/* ═══ 入场动画已移除：直接进入 ═══ */
+document.body.classList.add("loaded");
+
+/* ═══ Hero 逐字 ═══ */
+(function(){
+  const lines = ["Silver,", "Softly."];
+  let d = 0, html = "";
+  lines.forEach((ln, li) => {
+    let inner = "";
+    for (const ch of ln) inner += `<span class="ch" style="transition-delay:${(d++*.035).toFixed(2)}s">${ch}</span>`;
+    html += `<span class="ln">${li === 1 ? "<em>"+inner+"</em>" : inner}</span>`;
+  });
+  document.getElementById("heroTitle").innerHTML = html;
+})();
+
+/* ═══ reveal / split / 计数 ═══ */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in"); io.unobserve(e.target);
+}), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => {
+  el.style.transitionDelay = (el.style.getPropertyValue("--i") || 0) * .12 + "s";
+  io.observe(el);
+});
+new IntersectionObserver((es,o)=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("in");o.unobserve(e.target);}
+}),{threshold:.3}).observe(document.getElementById("muse"));
+new IntersectionObserver((es,o)=>es.forEach(e=>{
+  if(!e.isIntersecting)return;o.unobserve(e.target);
+  e.target.querySelectorAll("[data-count]").forEach(n=>{
+    const end=+n.dataset.count,suf=n.dataset.suffix||"";
+    const t0=performance.now(),dur=1600;
+    (function tick(t){const p=Math.min(1,(t-t0)/dur);
+      n.textContent=Math.round(end*(1-Math.pow(1-p,3)))+suf;
+      if(p<1)requestAnimationFrame(tick);})(t0);
+  });
+}),{threshold:.4}).observe(document.getElementById("craft"));
+
+/* ═══ Selected work：huyml 式滚动切换 · 20 件 ═══ */
+const PRODS = [
+  { img:"assets-v2/prod-ring.webp",     cat:"Ring",           name:"素圈 · 锤纹",       price:"¥ 420",       mat:"925 银 · 锤纹",      lead:"7 天",  desc:"整圈手工锤纹，每一枚的纹路都不可复制。" },
+  { img:"assets-v2/prod-ring2.webp",    cat:"Rings — Pair",   name:"麻花对戒",          price:"¥ 680 / 对",  mat:"925 银 · 缠绕锻打",  lead:"10 天", desc:"两根银条互相缠绕后一同锻打，咬合处不做抛光。" },
+  { img:"assets-v2/prod-necklace.webp", cat:"Necklace",       name:"碎浪锁骨链",        price:"¥ 890",       mat:"925 银 · 米粒链",    lead:"7 天",  desc:"链身细若发丝，坠一颗不规则银粒，像退潮后留在掌心的那颗。" },
+  { img:"assets-v2/prod-earrings.webp", cat:"Ear Cuff",       name:"耳骨夹 · 一对",     price:"¥ 360",       mat:"925 银 · 弹簧耳夹",  lead:"7 天",  desc:"不需要耳洞。弹力经过上百次试戴调校。" },
+  { img:"assets-v2/prod-bangle.webp",   cat:"Bangle",         name:"开口手镯",          price:"¥ 1,120",     mat:"925 银 · 渐密锤纹",  lead:"14 天", desc:"锤纹在开口处渐密——离手最近的地方，最用力。" },
+  { img:"assets-v2/prod-06.webp",       cat:"Ring",           name:"竹节戒",            price:"¥ 480",       mat:"925 银 · 竹节纹",    lead:"7 天",  desc:"一节一节手工錾出来的竹节，戴上像一枝细竹。" },
+  { img:"assets-v2/prod-07.webp",       cat:"Rings — Set",    name:"叠戴细戒三件组",    price:"¥ 560",       mat:"925 银 · 光面三件",  lead:"7 天",  desc:"三枚不同宽度的光面细戒，叠戴还是分送都合适。" },
+  { img:"assets-v2/prod-08.webp",       cat:"Necklace",       name:"月相项链",          price:"¥ 960",       mat:"925 银 · 月相坠",    lead:"10 天", desc:"从新月到满月的五相轮转，坠在锁骨正下方。" },
+  { img:"assets-v2/prod-09.webp",       cat:"Earrings",       name:"碎银耳线",          price:"¥ 520",       mat:"925 银 · 米珠坠",    lead:"7 天",  desc:"最细的链子配米粒大的银珠，轻到忘记它的存在。" },
+  { img:"assets-v2/prod-10.webp",       cat:"Bracelet",       name:"方糖手链",          price:"¥ 760",       mat:"925 银 · 方珠链",    lead:"10 天", desc:"方糖一样的银珠串在细链上，甜而不腻。" },
+  { img:"assets-v2/prod-11.webp",       cat:"Bangle",         name:"水波手镯",          price:"¥ 1,280",     mat:"925 银 · 水波纹",    lead:"14 天", desc:"表面像风吹过的水面，每一道波纹都是手推的。" },
+  { img:"assets-v2/prod-13.webp",       cat:"Ring",           name:"双圈戒",            price:"¥ 540",       mat:"925 银 · 双环互扣",  lead:"7 天",  desc:"两枚细环互相咬住，谁也不抢谁的风头。" },
+  { img:"assets-v2/prod-12.webp",       cat:"Studs",          name:"豌豆荚耳钉",        price:"¥ 390",       mat:"925 银 · 立体小件",  lead:"7 天",  desc:"豆荚里睡着三颗银豆，别在耳垂上刚刚好。" },
+  { img:"assets-v2/prod-14.webp",       cat:"Collar",         name:"长颈链",            price:"¥ 1,180",     mat:"925 银 · 硬领圈",    lead:"14 天", desc:"硬朗的领圈，不用链条的软，撑得起白衬衫。" },
+  { img:"assets-v2/prod-15.webp",       cat:"Ring",           name:"编织戒",            price:"¥ 620",       mat:"925 银 · 竹篮纹",    lead:"10 天", desc:"一根银丝编到底，纹路密得像外婆的竹篮。" },
+  { img:"assets-v2/prod-16.webp",       cat:"Earrings",       name:"雨滴耳坠",          price:"¥ 680",       mat:"925 银 · 水滴坠",    lead:"10 天", desc:"落在耳垂上的一滴雨，凝在坠下来之前。" },
+  { img:"assets-v2/prod-17.webp",       cat:"Anklet",         name:"素银脚链",          price:"¥ 450",       mat:"925 银 · 细链铃铛",  lead:"7 天",  desc:"脚踝上一圈细链铃铛，走路时只有自己听得见。" },
+  { img:"assets-v2/prod-18.webp",       cat:"Brooch",         name:"橄榄叶胸针",        price:"¥ 820",       mat:"925 银 · 立体叶脉",  lead:"10 天", desc:"一枝橄榄叶别在大衣领上，银的，不用换。" },
+  { img:"assets-v2/prod-19.webp",       cat:"Ring — Oxidized",name:"做旧银戒",          price:"¥ 510",       mat:"925 银 · 做旧处理",  lead:"7 天",  desc:"整圈做旧发黑，只有内圈抛亮——旧的在外，新的贴手。" },
+  { img:"assets-v2/prod-20.webp",       cat:"Necklace",       name:"橄榄珠项链",        price:"¥ 860",       mat:"925 银 + 橄榄玉珠",  lead:"10 天", desc:"一颗橄榄玉珠吊在细链上，银是冷的，玉是温的。" }
+];
+const work = document.getElementById("showcase");
+const deck = document.getElementById("deck");
+const wList = document.getElementById("wList");
+const mMat = document.getElementById("mMat"), mLead = document.getElementById("mLead"),
+      mPrice = document.getElementById("mPrice"), wNum = document.getElementById("wNum"),
+      wDetail = document.getElementById("wDetail");
+/* 渲染 20 张卡 + 20 条列表（列表只留品类+名称，描述走下方详情条） */
+PRODS.forEach((p, i) => {
+  const img = new Image();
+  img.src = p.img; img.alt = p.name; img.loading = "lazy";
+  deck.appendChild(img);
+  const it = document.createElement("div");
+  it.className = "w-item" + (i === 0 ? " on" : "");
+  it.innerHTML = `<p class="w-cat">${p.cat}</p><p class="w-name">${p.name}</p>`;
+  wList.appendChild(it);
+});
+const cards = [...deck.children], items = [...wList.children];
+let curIdx = -1;
+function setDeck(i){
+  if (i === curIdx || i < 0 || i >= PRODS.length) return;
+  curIdx = i;
+  cards.forEach((c, k) => {
+    const d = k - i;
+    let tf = "", o = 0, z = 1;
+    if (d === 0)       { tf = "rotate(1.5deg)";                        o = 1;  z = 50; }
+    else if (d === -1) { tf = "rotate(-7deg) translate(-16%,-4%) rotateY(-10deg)"; o = 0; z = 48; }
+    else if (d === -2) { tf = "rotate(-12deg) translate(-26%,-7%)";  o = 0; z = 46; }
+    else if (d === 1)  { tf = "rotate(7deg) translate(16%,4%) rotateY(10deg)";     o = 0; z = 47; }
+    else if (d === 2)  { tf = "rotate(12deg) translate(26%,7%)";     o = 0; z = 45; }
+    c.style.transform = tf; c.style.opacity = o; c.style.zIndex = z;
+  });
+  items.forEach((it, k) => it.classList.toggle("on", k === i));
+  /* 列表滚动跟随：让高亮项保持在列表可视区中部 */
+  const act = items[i];
+  if (act && wList.clientHeight){
+    const off = act.offsetTop + act.offsetHeight / 2 - wList.clientHeight / 2;
+    const max = Math.max(0, wList.scrollHeight - wList.clientHeight);
+    wList.style.transform = "translateY(" + Math.max(-max, Math.min(0, -off)) + "px)";
+  }
+  mMat.textContent = PRODS[i].mat;
+  mLead.textContent = PRODS[i].lead;
+  mPrice.textContent = PRODS[i].price;
+  wNum.textContent = String(i + 1).padStart(2, "0");
+  /* 详情条淡入换文 */
+  wDetail.classList.remove("show");
+  wDetail.textContent = PRODS[i].desc;
+  requestAnimationFrame(() => requestAnimationFrame(() => wDetail.classList.add("show")));
+}
+function workScroll(){
+  const vh = innerHeight, r = work.getBoundingClientRect();
+  if (r.bottom < 0 || r.top > vh) return;
+  const total = r.height - vh;
+  const p = Math.min(.999, Math.max(0, -r.top / total));
+  setDeck(Math.floor(p * PRODS.length));
+}
+addEventListener("scroll", () => requestAnimationFrame(workScroll), { passive: true });
+workScroll();
+
+/* ═══ 轻视差 ═══ */
+if (!reduced) {
+  const layers = [...document.querySelectorAll(".px")];
+  let tick = false;
+  function px(){
+    const vh = innerHeight;
+    layers.forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      el.style.transform = `translateY(${(r.top + r.height/2 - vh/2) * parseFloat(el.dataset.px) * .16}px)`;
+    });
+    tick = false;
+  }
+  addEventListener("scroll", () => { if (!tick) { requestAnimationFrame(px); tick = true; } }, { passive: true });
+  px();
+}
+
+/* ═══ 鼠标视差（Hero 肖像）═══ */
+if (fine && !reduced) {
+  const hi = document.querySelector("#heroImg img");
+  addEventListener("mousemove", e => {
+    hi.style.translate = `${(e.clientX/innerWidth-.5)*-14}px ${(e.clientY/innerHeight-.5)*-10}px`;
+  });
+}
+
+/* ═══ 进度线 / 导航 / 索引 ═══ */
+const prog=document.getElementById("prog"),nav=document.getElementById("nav");
+const dotEls=[...document.querySelectorAll("#dots a")];
+const secIds=["hero","showcase","muse","craft","bespoke","visit"];
+addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  prog.style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+"%";
+  nav.classList.toggle("scrolled",scrollY>40);
+  let cur=0;
+  secIds.forEach((id,i)=>{const s=document.getElementById(id);
+    if(s&&s.getBoundingClientRect().top<innerHeight*.5)cur=i;});
+  dotEls.forEach((d,i)=>d.classList.toggle("on",i===cur));
+},{passive:true});
+
+/* ═══ 跑马灯 ═══ */
+const mq="925 STERLING i HANDMADE i HANGZHOU i MADE TO ORDER i LIFETIME REFINISH i 银不喧哗 i ";
+document.getElementById("mq1").innerHTML=(mq+mq).split("i").filter(s=>s.trim())
+  .map(s=>`<span>${s.trim().toUpperCase()} <i>·</i></span>`).join("");
+</script>
+</body>
+</html>
