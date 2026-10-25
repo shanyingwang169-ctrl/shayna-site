@@ -60,7 +60,7 @@ nav.top .links a:hover{opacity:1;}
 .reveal.in{opacity:1;transform:none;transition-delay:calc(var(--i,0) * 90ms);}
 
 /* ═══ 1. 首屏 ═══ */
-#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;}
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-bottom:110px;}
 #hero .wrap{width:100%;}
 .hero-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(24px,4vh,44px);}
 .hero-name{font-size:clamp(88px,15vw,220px);color:var(--ink);}
@@ -78,7 +78,7 @@ nav.top .links a:hover{opacity:1;}
 .hero-shots a:nth-child(2){transform:rotate(1.2deg) translateY(-4px);}
 .hero-shots a:nth-child(3){transform:rotate(-1deg) translateY(12px);}
 .hero-shots a:hover{transform:rotate(0) translateY(-8px);box-shadow:0 22px 56px rgba(20,20,20,.16);}
-.hero-shots img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.hero-shots img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
 .hero-shots .cap{display:block;padding:9px 12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
 .hero-foot{position:absolute;bottom:clamp(24px,5vh,48px);left:0;right:0;display:flex;justify-content:space-between;
   padding:0 clamp(24px,5vw,64px);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
@@ -91,12 +91,14 @@ nav.top .links a:hover{opacity:1;}
   padding:clamp(14px,2.4vh,26px);}
 .case-card{width:100%;height:100%;background:var(--card);border:1.5px solid rgba(20,20,20,.28);border-radius:14px;
   box-shadow:0 18px 60px rgba(20,20,20,.12);
+  transition:transform var(--t-base) var(--ease),box-shadow var(--t-base) var(--ease);
   overflow:hidden;display:grid;grid-template-columns:7fr 5fr;}
-.case-cover{position:relative;overflow:hidden;background:#F4F4F2;height:100%;}
-.case-cover img{width:100%;height:100%;object-fit:cover;
-  transition:transform 1.2s var(--ease);}
+.case-cover{position:relative;overflow:hidden;background:#F4F4F2;height:100%;
+  display:flex;align-items:center;justify-content:center;padding:clamp(18px,2.2vw,36px);}
+.case-cover img{max-width:100%;max-height:100%;object-fit:contain;
+  border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 30px rgba(20,20,20,.08);}
 @media (min-width:821px) and (hover:hover){
-  .panel:hover .case-cover img{transform:scale(1.05);}
+  .panel:hover .case-card{transform:translateY(-10px);box-shadow:0 30px 80px rgba(20,20,20,.2);}
 }
 .case-body{padding:clamp(24px,4vw,72px);display:flex;flex-direction:column;justify-content:center;overflow:auto;}
 .case-idx{font-family:var(--serif);font-size:15px;color:var(--muted);letter-spacing:.08em;}
@@ -292,8 +294,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-vera.jpg" alt="Vera Lin 个人站首页截图"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 01</span>
-          <h2 class="case-title">Vera Lin</h2>
-          <p class="case-cn">权威个人站 · 职业教练官网</p>
+          <h2 class="case-title">个人官网</h2>
+          <p class="case-cn">Vera Lin · 职业教练</p>
           <p class="case-desc">九屏长页：滚动放大案例区、金句轮播视频背景、成就时间线与 FAQ 结构。旷野橄榄配色，Fraunces 衬线排版，全站双向动效。</p>
           <div class="case-tags"><span>个人官网</span><span>长页叙事</span><span>视频背景</span><span>微交互</span></div>
           <div class="case-links">
@@ -309,8 +311,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-liubai.jpg" alt="鎏白 LIUBAI 首饰品牌宣传页"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 02</span>
-          <h2 class="case-title">鎏白 LIUBAI</h2>
-          <p class="case-cn">品牌宣传页 · 手作银饰工作室</p>
+          <h2 class="case-title">品牌宣传页</h2>
+          <p class="case-cn">鎏白 LIUBAI · 手作银饰工作室</p>
           <p class="case-desc">银饰品牌长页：主理人特写封面、二十件作品滚动展示（巨号计数 + 期刊式列表 + 详情条）、订制三档与手作流程，冷白画报排版，零依赖纯手写交互。</p>
           <div class="case-tags"><span>品牌宣传页</span><span>滚动叙事</span><span>画报排版</span><span>微交互</span></div>
           <div class="case-links">
@@ -325,8 +327,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-maidao.jpg" alt="麦岛面包店 品牌宣传页"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 03</span>
-          <h2 class="case-title">麦岛面包店</h2>
-          <p class="case-cn">品牌宣传页 · 社区烘焙房</p>
+          <h2 class="case-title">商家落地页</h2>
+          <p class="case-cn">麦岛面包店 · 社区烘焙房</p>
           <p class="case-desc">小店门面页：全屏门面场景推近、真实摄影暖调视觉、"每天两炉卖完即止"品牌叙事、"一块面包的诞生"五步滚动过程动画，单文件零依赖，图片全部内嵌。</p>
           <div class="case-tags"><span>品牌宣传页</span><span>小店门面</span><span>过程动画</span><span>单文件</span></div>
           <div class="case-links">
@@ -341,8 +343,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-chenyu.jpg" alt="陈屿 CHEN YU 摄影艺术家作品集"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 04</span>
-          <h2 class="case-title">陈屿 CHEN YU</h2>
-          <p class="case-cn">艺术家作品集 · 摄影师长廊</p>
+          <h2 class="case-title">艺术作品集</h2>
+          <p class="case-cn">陈屿 CHEN YU · 摄影师长廊</p>
           <p class="case-desc">摄影艺术家作品集：横向无限滚动画廊（走到尽头无缝绕回）、35mm 胶片框走带动效、AI 生成主理人封面人像，潮汐 / 光域 / 浮影三系列十三件作品，胶片暗调统一调色，单文件零依赖。</p>
           <div class="case-tags"><span>艺术家作品集</span><span>横向画廊</span><span>胶片动效</span><span>单文件</span></div>
           <div class="case-links">
@@ -357,8 +359,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-yizhou.jpg" alt="沈亦舟 SHEN YIZHOU 建筑留学申请作品集"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 05</span>
-          <h2 class="case-title">沈亦舟 SHEN YIZHOU</h2>
-          <p class="case-cn">留学申请作品集 · 建筑方向</p>
+          <h2 class="case-title">留学申请作品集</h2>
+          <p class="case-cn">沈亦舟 · 建筑方向</p>
           <p class="case-desc">全英文建筑申请作品集：四个项目完整叙事（概念 → 图纸 → 模型 → 成片）、FIG 图注编号系统、SVG 图纸网格逐笔画入、图纸灯箱与目录悬浮缩略图，申请级克制的版式语言，单文件零依赖。</p>
           <div class="case-tags"><span>留学作品集</span><span>全英文</span><span>图纸叙事</span><span>单文件</span></div>
           <div class="case-links">
@@ -373,8 +375,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-yihe.jpg" alt="Yihe Lin 国际生个人展示站"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 06</span>
-          <h2 class="case-title">Yihe Lin 林亦可</h2>
-          <p class="case-cn">国际生个人站 · IB 申请美本</p>
+          <h2 class="case-title">国际生申请站</h2>
+          <p class="case-cn">Yihe Lin 林亦可 · IB 申请美本</p>
           <p class="case-desc">面向 IB/A-Level/AP 高中生的申请展示站：Hero 视差、双城对比滑块、9 宫格翻牌、拖拽时间线四个可玩交互，活动卡片按社团/竞赛/体育/志愿分类可展开，项目卡点开案例详情（背景/我做了什么/结果），配套一页式英文简历 PDF，中英双语一键切换，单文件零依赖。</p>
           <div class="case-tags"><span>国际生个人站</span><span>双语切换</span><span>简历 PDF</span><span>四个交互</span></div>
           <div class="case-links">
@@ -389,8 +391,8 @@ footer{padding:40px 0;border-top:1px solid var(--line);}
         <div class="case-cover"><img src="assets/shot-iris.jpg" alt="Iris Chen 国际生个人展示站 · 学术科技风"></div>
         <div class="case-body">
           <span class="case-idx mono">Case — 07</span>
-          <h2 class="case-title">Iris Chen 陈艾琳</h2>
-          <p class="case-cn">国际生个人站 · 学术科技风</p>
+          <h2 class="case-title">国际生申请站</h2>
+          <p class="case-cn">Iris Chen 陈艾琳 · CS 方向</p>
           <p class="case-desc">CS 方向女生版：冷白墨蓝电光蓝配色、终端打字机 Hero、技能进度条滚动触发、PM2.5 数据图表悬停读数、项目标签筛选与弹层详情、深色模式一键切换，配套一页式 CV PDF 与中英双语，单文件零依赖。</p>
           <div class="case-tags"><span>国际生个人站</span><span>学术科技风</span><span>数据图表</span><span>深色模式</span></div>
           <div class="case-links">
