@@ -1079,8 +1079,8 @@ footer{background:var(--ink);color:#6f7d78;padding:30px 0 40px;font-family:var(-
   var glCanvas = document.getElementById('gl');
   var vids = [document.getElementById('vid1'), document.getElementById('vid2')];
   var SEGS = [
-    [0.00, 0.44, vids[0], 0.10, 0.82],
-    [0.44, 0.585, vids[1], 0.15, 0.85]
+    [0.00, 0.44, vids[0], 0.03, 0.97],
+    [0.44, 0.585, vids[1], 0.04, 0.96]
   ];
   var gl = null, prog = null, tex = null, uni = {}, glReady = false, texReady = false;
   var cropX = 1, cropY = 1, shiftS = 0, lastP = 0;
@@ -1127,7 +1127,7 @@ footer{background:var(--ink);color:#6f7d78;padding:30px 0 40px;font-family:var(-
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.uniform1i(uni.uTex, 0);
-      gl.uniform1f(uni.uZoom, 1.035);
+      gl.uniform1f(uni.uZoom, 1.02);
       gl.clearColor(0.13, 0.16, 0.17, 1);
       glReady = true;
       sizeGL();
@@ -1187,6 +1187,7 @@ footer{background:var(--ink);color:#6f7d78;padding:30px 0 40px;font-family:var(-
     if(texReady){
       gl.uniform1f(uni.uShift, shiftS + Math.sin(performance.now() * .0004) * .0012);
       gl.uniform2f(uni.uMouse, mpx * 2, mpy * 2);
+      gl.uniform1f(uni.uZoom, 1.02 + Math.min(p, .585) * .115);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
   }
