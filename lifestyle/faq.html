@@ -20,6 +20,7 @@
     <nav class="nav">
       <a href="collection.html">Collection</a>
       <a href="craft.html">Craft</a>
+      <a href="factory.html">Factory</a>
       <a href="projects.html">Projects</a>
       <a href="trade.html">Trade</a>
       <a href="about.html">About</a>
@@ -56,6 +57,7 @@
       <div>
         <h4>Company</h4>
         <a href="craft.html">Craft &amp; workshops</a>
+        <a href="factory.html">The factory floor</a>
         <a href="quality.html">Quality</a>
         <a href="projects.html">Projects</a>
         <a href="trade.html">Trade program</a>
@@ -95,6 +97,29 @@ if (rfq) rfq.addEventListener('submit', async e => {
     if (r.ok) { ok.style.display='block'; f.reset(); } else alert('Submission failed, please email sales@aurelle-outdoor.com');
   } catch { alert('Network error, please email sales@aurelle-outdoor.com'); }
 });
+</script>
+<script>
+(function(){
+  const lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-label','Image viewer');
+  lb.innerHTML='<span class="lb-count"></span><button class="lb-x" aria-label="Close">✕</button><div class="lb-main"><button class="lb-prev" aria-label="Previous">←</button><img alt=""><button class="lb-next" aria-label="Next">→</button></div><div class="lb-cap"></div><div class="lb-thumbs"></div>';
+  document.body.appendChild(lb);
+  let list=[],idx=0;
+  function show(i){idx=(i+list.length)%list.length;const im=list[idx];const big=lb.querySelector('.lb-main img');big.src=im.getAttribute('src');big.alt=im.alt||'';lb.querySelector('.lb-cap').textContent=im.alt||'';lb.querySelector('.lb-count').textContent=(idx+1)+' / '+list.length;lb.querySelectorAll('.lb-thumbs img').forEach((t,j)=>t.classList.toggle('cur',j===idx));}
+  function openLb(items,i){list=[...items];const th=lb.querySelector('.lb-thumbs');th.innerHTML='';list.forEach((im,j)=>{const t=document.createElement('img');t.src=im.getAttribute('src');t.alt='';t.loading='lazy';t.addEventListener('click',()=>show(j));th.appendChild(t);});lb.classList.add('on');document.body.style.overflow='hidden';show(i);}
+  function closeLb(){lb.classList.remove('on');document.body.style.overflow='';}
+  document.addEventListener('click',e=>{
+    if(lb.classList.contains('on')){if(e.target===lb||e.target.classList.contains('lb-main')){closeLb();}return;}
+    const im=e.target.closest('.figure img');
+    if(im&&!im.closest('a')){
+      const vis=[...document.querySelectorAll('.figure img')].filter(x=>x.offsetParent!==null&&!x.closest('a'));
+      if(vis.length)openLb(vis,vis.indexOf(im));
+    }
+  });
+  lb.querySelector('.lb-x').addEventListener('click',closeLb);
+  lb.querySelector('.lb-prev').addEventListener('click',()=>show(idx-1));
+  lb.querySelector('.lb-next').addEventListener('click',()=>show(idx+1));
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);});
+})();
 </script>
 </body>
 </html>
