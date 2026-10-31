@@ -238,3 +238,43 @@ footer.site{border-top:1px solid var(--line);padding:clamp(40px,6vw,72px) 0 32px
 
 /* ── 一页式锚点定位偏移 ── */
 .onepage [id]{scroll-margin-top:84px}
+
+/* ── 信任行 ── */
+.trustline{margin-top:24px;font-size:13.5px;color:var(--muted);letter-spacing:.01em}
+
+/* ── 视频卡 ── */
+.video-card{position:relative;aspect-ratio:16/10;cursor:pointer}
+.video-card img{width:100%;height:100%;object-fit:cover}
+.video-card .play{position:absolute;inset:0;margin:auto;width:72px;height:72px;border-radius:50%;border:0;background:rgba(244,241,234,.94);color:var(--green);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding-left:5px}
+.video-card .vlen{position:absolute;right:12px;bottom:12px;background:rgba(20,25,20,.72);color:#F1EEE6;font-size:12px;padding:3px 8px}
+
+/* ── 左图钉住 + 右步骤滚动 ── */
+.sticky-two{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,72px);align-items:start}
+.sticky-media{position:sticky;top:96px}
+@media(max-width:860px){.sticky-two{grid-template-columns:1fr}.sticky-media{position:static}}
+
+/* ── CTA 分隔带 ── */
+.cta-band{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:clamp(26px,3vw,34px);border-top:1px solid var(--line)}
+.cta-band h3{font-family:var(--display);font-size:clamp(20px,2.2vw,26px)}
+.cta-band p{color:var(--muted);margin-top:6px;font-size:15px;max-width:52ch}
+.block-green .cta-band{border-top-color:rgba(255,255,255,.18)}
+
+/* ── 联系区：团队卡 + 二维码 ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);margin-top:28px;align-items:start}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+.team{display:grid;grid-template-columns:92px 1fr;gap:18px;margin-top:clamp(24px,3vw,32px);align-items:start}
+.team>img{width:92px;height:112px;object-fit:cover}
+.qr-row{display:flex;gap:12px;align-items:center;margin-top:16px}
+.qr-row img{width:78px;height:78px;object-fit:contain;background:#fff;padding:4px}
+
+/* ── 语言切换 ── */
+.lang{background:none;border:0;font:inherit;font-size:13px;color:var(--muted);cursor:pointer;letter-spacing:.06em;padding:0}
+.lang:hover{color:var(--ink)}
+
+/* ── 导航指示块 ── */
+.nav{position:relative}
+.nav-ind{position:absolute;left:0;bottom:-7px;height:1.5px;background:var(--ink);width:0;opacity:0;transition:transform .28s cubic-bezier(.34,1.4,.64,1),width .28s cubic-bezier(.34,1.4,.64,1),opacity .2s}
+
+/* ── 磁吸 ── */
+[data-magnetic]{transition:transform .35s cubic-bezier(.34,1.56,.64,1);will-change:transform}
+@media(prefers-reduced-motion:reduce){[data-magnetic]{transition:none!important;transform:none!important}.nav-ind{transition:none}}
