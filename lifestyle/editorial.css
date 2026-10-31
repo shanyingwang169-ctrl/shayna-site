@@ -235,3 +235,6 @@ footer.site{border-top:1px solid var(--line);padding:clamp(40px,6vw,72px) 0 32px
 .block-green .steps-list span{color:#C3C9BF}
 .block-green .steps-list li{border-color:rgba(255,255,255,.16)}
 .block-green .steps-list li::before{color:#8FAE9B}
+
+/* ── 一页式锚点定位偏移 ── */
+.onepage [id]{scroll-margin-top:84px}
