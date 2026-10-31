@@ -18,14 +18,15 @@
   <div class="wrap top-in">
     <a class="wordmark" href="index.html">AURELLE</a>
     <nav class="nav">
-      <a href="index.html" class="act">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#craft">Craft</a>
-      <a href="#factory">Factory</a>
-      <a href="#projects">Projects</a>
-      <a href="#trade">Trade</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="quote">Request catalogue</a>
+      <a href="index.html" class="act" data-t="nav.home">Home</a>
+      <a href="#collection" data-t="nav.collection">Collection</a>
+      <a href="#craft" data-t="nav.craft">Craft</a>
+      <a href="#factory" data-t="nav.factory">Factory</a>
+      <a href="#projects" data-t="nav.projects">Projects</a>
+      <a href="#trade" data-t="nav.trade">Trade</a>
+      <a href="#about" data-t="nav.about">About</a>
+      <a href="#contact" class="quote" data-t="nav.quote">Request catalogue</a>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">ES</button>
     </nav>
   </div>
 </header>
@@ -33,12 +34,13 @@
 <div id="home">
   <div class="hero-split">
     <div class="hero-copy">
-      <h1>Furniture for the hours you spend outside.</h1>
-      <p>Hand-woven rattan and powder-coated aluminium, made in our own workshops in Shunde and shipped to garden retailers and hotels in sixty countries.</p>
+      <h1 data-t="hero.h1">Furniture for the hours you spend outside.</h1>
+      <p data-t="hero.p">Hand-woven rattan and powder-coated aluminium, made in our own workshops in Shunde and shipped to garden retailers and hotels in sixty countries.</p>
       <div class="hero-actions">
-        <a class="link-strong" href="#contact">Request the catalogue</a>
-        <a class="link-muted" href="#collection">See the collection</a>
+        <a class="link-strong" href="#contact" data-t="hero.cta1">Request the catalogue</a>
+        <a class="link-muted" href="#collection" data-t="hero.cta2">See the collection</a>
       </div>
+      <p class="trustline">EN-581 tested · BSCI audited, rating A · 60+ export countries · MOQ 5 sets</p>
     </div>
     <div class="hero-photo"><img src="assets/hero-patio.webp" alt="Rattan sofa set on a Mediterranean terrace at golden hour" fetchpriority="high"></div>
   </div>
@@ -47,7 +49,7 @@
 <div id="collection">
   <section>
     <div class="wrap">
-      <h2>Five families, one workshop.</h2>
+      <h2 data-t="sec.collection">Five families, one workshop.</h2>
       <p class="lede">Every piece shares the same frame shop, the same weavers and the same cushion supplier. What changes is how you want to sit.</p>
       <div style="margin-top:clamp(36px,5vw,64px)">
         <div class="row">
@@ -105,7 +107,7 @@
     <div class="wrap materials">
       <figure class="figure rise"><img src="assets/f-weaving.webp" alt="A weaver's hands working PE rattan onto an aluminium frame" loading="lazy"></figure>
       <div class="copy">
-        <h2>The weave is the whole argument.</h2>
+        <h2 data-t="sec.craft">The weave is the whole argument.</h2>
         <p>Eighty weavers, five to ten years each at the frame. Flat PE rattan, UV-stabilised and tested for a thousand hours before it earns a place in the sample room.</p>
         <p>Aluminium, powder coat, weave and upholstery sit in four linked buildings on one street in Lecong. Nothing critical leaves the site — which is why a custom colour costs days, not weeks.</p>
         <div style="margin-top:26px"><a class="link-strong" href="#factory" style="color:#F1EEE6;border-color:#F1EEE6">Walk the factory</a></div>
@@ -117,27 +119,43 @@
 <div id="factory">
   <section>
     <div class="wrap">
-      <h2>The floor your order runs on.</h2>
+      <h2 data-t="sec.factory">The floor your order runs on.</h2>
       <p class="lede">Fifteen thousand square metres in Lecong. Photographs from the last three shipments — not a stock library.</p>
+
+      <div class="sticky-two" style="margin-top:clamp(30px,4vw,52px)">
+        <div class="sticky-media">
+          <figure class="figure video-card rise"><img src="assets/d-video.webp" alt="Inside the weaving hall — factory walkthrough video still" loading="lazy"><button class="play" aria-label="Play the factory walkthrough">▶</button><span class="vlen">3:20</span></figure>
+          <div class="cap"><b>Factory walkthrough</b><span>Filmed last month · 3 min 20 s</span></div>
+        </div>
+        <div>
+          <h3 style="font-size:clamp(22px,2.4vw,30px)">How a set gets made.</h3>
+          <ol class="steps-list" style="margin-top:22px">
+            <li><b>Frame</b><span>Cut, TIG-welded on a jig, powder-coated in-house in any RAL colour.</span></li>
+            <li><b>Weave</b><span>Hand-woven flat PE rattan, tension checked every two hours against the sample.</span></li>
+            <li><b>Upholstery</b><span>Cushions cut from 28 kg/m³ foam, covered in olefin or acrylic, logged by batch.</span></li>
+            <li><b>Inspection</b><span>AQL 2.5 final inspection with a photo report before a carton is sealed.</span></li>
+            <li><b>Loading</b><span>Knock-down packing, container loading supervised and photographed.</span></li>
+          </ol>
+        </div>
+      </div>
+
       <div class="trio" style="margin-top:clamp(30px,4vw,52px)">
         <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/f-welding.webp" alt="TIG welding a lounge chair frame at the frame shop" loading="lazy"></figure><div class="cap"><b>Frame shop</b><span>1.5 mm aluminium · TIG welds</span></div></div>
         <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/f-qc.webp" alt="Inspector checking weave tension at the QC station" loading="lazy"></figure><div class="cap"><b>Inspection</b><span>Every two hours · logged by order</span></div></div>
-        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/factory-weaving.webp" alt="A weaver working flat PE rattan in the sampling room" loading="lazy"></figure><div class="cap"><b>Sampling room</b><span>New colours live here first</span></div></div>
+        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/f-cartons.webp" alt="Cartons labelled and palletised for export" loading="lazy"></figure><div class="cap"><b>Packing</b><span>Barcoded cartons · palletised</span></div></div>
       </div>
       <div class="trio" style="margin-top:clamp(10px,1.6vw,18px)">
-        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/factory-showroom.webp" alt="Finished sets staged in the workshop" loading="lazy"></figure><div class="cap"><b>Staging</b><span>Photographed before packing</span></div></div>
+        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/d-parts.webp" alt="Knock-down parts laid out at the packing station" loading="lazy"></figure><div class="cap"><b>Knock-down</b><span>Hardware bagged per set</span></div></div>
         <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/f-loading.webp" alt="Container loading at the dock" loading="lazy"></figure><div class="cap"><b>Loading</b><span>48 sets per 40HQ</span></div></div>
         <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/f-showroom2.webp" alt="The export showroom in Lecong" loading="lazy"></figure><div class="cap"><b>Showroom</b><span>Visit, or a live video walk</span></div></div>
       </div>
-      <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(28px,5vw,72px);margin-top:clamp(44px,6vw,80px);align-items:start">
-        <h2 style="font-size:clamp(24px,2.8vw,34px)">How a set gets made.</h2>
-        <ol class="steps-list" style="margin-top:0">
-          <li><b>Frame</b><span>Cut, TIG-welded on a jig, powder-coated in-house in any RAL colour.</span></li>
-          <li><b>Weave</b><span>Hand-woven flat PE rattan, tension checked every two hours against the sample.</span></li>
-          <li><b>Upholstery</b><span>Cushions cut from 28 kg/m³ foam, covered in olefin or acrylic, logged by batch.</span></li>
-          <li><b>Inspection</b><span>AQL 2.5 final inspection with a photo report before a carton is sealed.</span></li>
-          <li><b>Loading</b><span>Knock-down packing, container loading supervised and photographed.</span></li>
-        </ol>
+
+      <div class="cta-band">
+        <div>
+          <h3>Send us a photograph of the space.</h3>
+          <p>A shortlist, a rendering and FOB pricing back within one business day.</p>
+        </div>
+        <a class="btn-solid" href="#contact" data-magnetic data-t="cta.quote">Ask for a quote</a>
       </div>
     </div>
   </section>
@@ -146,7 +164,7 @@
 <div id="projects">
   <section style="padding-top:0">
     <div class="wrap">
-      <h2>Furniture already living outside.</h2>
+      <h2 data-t="sec.projects">Furniture already living outside.</h2>
       <p class="lede">Retail programs, resort terraces and villa developments. The numbers are the interesting part.</p>
       <div style="margin-top:clamp(36px,5vw,64px)">
         <div class="row">
@@ -177,23 +195,19 @@
 
 <div id="trade">
   <section>
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start">
-      <div>
-        <h2>Terms at a glance.</h2>
-        <div class="t-scroll"><table class="t">
+    <div class="wrap">
+      <h2 data-t="sec.trade">Terms at a glance.</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);margin-top:28px;align-items:start">
+        <div class="t-scroll"><table class="t" style="margin-top:0">
           <tr><th>Minimum order</th><td>5 sets, mixed families in one container</td></tr>
           <tr><th>Sample lead time</th><td>7–12 days, cost credited above 20 sets</td></tr>
           <tr><th>Production</th><td>30–45 days from deposit</td></tr>
           <tr><th>Payment</th><td>30% deposit, 70% against B/L copy</td></tr>
           <tr><th>Trade terms</th><td>FOB Foshan / Nansha, CIF on request</td></tr>
-          <tr><th>Loading</th><td>48 sofa sets per 40HQ, knock-down</td></tr>
           <tr><th>Spares</th><td>2% free with every order</td></tr>
         </table></div>
-      </div>
-      <div>
-        <h2>What we customise.</h2>
-        <div class="t-scroll"><table class="t">
-          <tr><th>Option</th><th>From</th><th>Extra lead time</th></tr>
+        <div class="t-scroll"><table class="t" style="margin-top:0">
+          <tr><th>Customisation</th><th>From</th><th>Lead time</th></tr>
           <tr><td>Woven logo</td><td>50 sets</td><td>None</td></tr>
           <tr><td>Cushion fabric</td><td>Any volume</td><td>None</td></tr>
           <tr><td>Weave colour</td><td>100 sets</td><td>7 days</td></tr>
@@ -201,7 +215,26 @@
           <tr><td>Retail packaging</td><td>200 sets</td><td>7 days</td></tr>
           <tr><td>New design (ODM)</td><td>300 sets</td><td>45–60 days</td></tr>
         </table></div>
-        <p class="small" style="margin-top:18px">Price list and colour card go to verified business addresses, usually the same day.</p>
+      </div>
+
+      <h2 data-t="sec.pack" style="margin-top:clamp(48px,6vw,80px)">Packing and container loading.</h2>
+      <p class="lede">Freight is half the landed cost. These are the numbers your forwarder will ask for.</p>
+      <div class="t-scroll"><table class="t">
+        <tr><th>Family</th><th>Cartons per set</th><th>CBM per set</th><th>Sets per 40HQ</th><th>Sets per 20GP</th><th>Gross weight</th></tr>
+        <tr><td>Riviera RS-02</td><td>4</td><td>1.85</td><td>33</td><td>14</td><td>148 kg</td></tr>
+        <tr><td>Dining DS series</td><td>3</td><td>1.20</td><td>52</td><td>22</td><td>96 kg</td></tr>
+        <tr><td>Lounger SL series</td><td>1</td><td>0.42</td><td>152</td><td>64</td><td>34 kg</td></tr>
+        <tr><td>Umbrella UM series</td><td>1</td><td>0.28</td><td>240</td><td>100</td><td>22 kg</td></tr>
+        <tr><td>Bistro BA series</td><td>2</td><td>0.55</td><td>118</td><td>50</td><td>46 kg</td></tr>
+      </table></div>
+      <p class="small" style="margin-top:14px">Knock-down flat packing. Retail barcoded cartons and pallet labelling on request. Loading photographs and a container plan travel with every shipment.</p>
+
+      <div class="cta-band light">
+        <div>
+          <h3 data-t="cta.cat">The 2026 catalogue, all five families.</h3>
+          <p>Specifications, finishes, packing data and certificates — six pages, print or share with your team.</p>
+        </div>
+        <a class="btn-solid" href="catalogue.html" target="_blank" rel="noopener" data-magnetic>Download catalogue</a>
       </div>
     </div>
   </section>
@@ -212,7 +245,7 @@
     <div class="wrap">
       <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(28px,5vw,72px);align-items:center">
         <div>
-          <h2>Started with one weaving frame.</h2>
+          <h2 data-t="sec.about">Started with one weaving frame.</h2>
           <p class="lede">In 2012 our founder wove the first Riviera prototype by hand for a German buyer who wanted hospitality quality at retail prices. That order became a workshop; the workshop became four buildings. The habit stuck: we still tension-check every seat by hand.</p>
           <div class="numbers" style="margin-top:clamp(32px,4vw,48px)">
             <div><b>120</b><span>people, 80 of them weavers</span></div>
@@ -221,7 +254,7 @@
             <div><b>60+</b><span>export countries</span></div>
           </div>
         </div>
-        <figure class="figure rise" style="aspect-ratio:4/5"><img src="assets/f-showroom2.webp" alt="The AURELLE export showroom in Lecong" loading="lazy"></figure>
+        <figure class="figure rise" style="aspect-ratio:4/5"><img src="assets/scene-evening.webp" alt="AURELLE set on a villa terrace at blue hour" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -229,20 +262,28 @@
 
 <div id="quality">
   <section class="block-green">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start">
-      <div>
-        <h2>Built for sun, salt and supermarket audits.</h2>
-        <p class="lede">Three inspection gates, two in-house weathering chambers, and the paperwork retail buyers actually ask for.</p>
-        <p class="lede" style="margin-top:18px">Five-year frame warranty, three on weave and stitching. Two per cent free spares with every order, so an after-sales conversation starts with a replacement rather than an argument.</p>
+    <div class="wrap">
+      <h2 data-t="sec.quality">Built for sun, salt and supermarket audits.</h2>
+      <p class="lede">Three inspection gates, two in-house weathering chambers, and the paperwork retail buyers actually ask for.</p>
+      <div class="trio" style="margin-top:clamp(28px,4vw,44px)">
+        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/d-certs.webp" alt="Certificates on the factory office wall" loading="lazy"></figure><div class="cap"><b>Certificates</b><span>EN-581 · ISO 9001 · BSCI A</span></div></div>
+        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/d-report.webp" alt="Test report documents" loading="lazy"></figure><div class="cap"><b>Test reports</b><span>TÜV and SGS, copies with every quote</span></div></div>
+        <div><figure class="figure rise" style="aspect-ratio:4/3"><img src="assets/d-lab.webp" alt="In-house UV and salt-spray chambers" loading="lazy"></figure><div class="cap"><b>In-house lab</b><span>1,000 h UV · 500 h salt spray</span></div></div>
       </div>
-      <div class="t-scroll"><table class="t">
-        <tr><th>Certificate</th><th>Scope</th><th>Status</th></tr>
-        <tr><td>EN-581</td><td>Sofa, dining, lounger series</td><td>Current, 2025</td></tr>
-        <tr><td>ISO 9001:2015</td><td>Quality system</td><td>Current, 2024</td></tr>
-        <tr><td>CE</td><td>Umbrella series</td><td>Current, 2025</td></tr>
-        <tr><td>FSC chain of custody</td><td>Teak top options</td><td>Current, 2026</td></tr>
-        <tr><td>BSCI social audit</td><td>Full factory</td><td>Rating A, 2025</td></tr>
-      </table></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);margin-top:clamp(28px,4vw,44px);align-items:start">
+        <div class="t-scroll"><table class="t" style="margin-top:0">
+          <tr><th>Certificate</th><th>Scope</th><th>Status</th></tr>
+          <tr><td>EN-581</td><td>Sofa, dining, lounger series</td><td>Current, 2025</td></tr>
+          <tr><td>ISO 9001:2015</td><td>Quality system</td><td>Current, 2024</td></tr>
+          <tr><td>CE</td><td>Umbrella series</td><td>Current, 2025</td></tr>
+          <tr><td>FSC chain of custody</td><td>Teak top options</td><td>Current, 2026</td></tr>
+          <tr><td>BSCI social audit</td><td>Full factory</td><td>Rating A, 2025</td></tr>
+        </table></div>
+        <div>
+          <p class="lede">Five-year frame warranty, three on weave and stitching. Two per cent free spares with every order, so an after-sales conversation starts with a replacement rather than an argument.</p>
+          <p class="lede" style="margin-top:16px">If your market needs another mark, we test through TÜV or SGS and confirm the cost before you order.</p>
+        </div>
+      </div>
     </div>
   </section>
 </div>
@@ -250,7 +291,7 @@
 <div id="faq">
   <section>
     <div class="narrow">
-      <h2>Questions buyers actually ask.</h2>
+      <h2 data-t="sec.faq">Questions buyers actually ask.</h2>
       <div class="faq">
         <details><summary>What is the minimum order?</summary><p>Five sets, and you can mix sofa, dining and lounger families in one container. Umbrellas start at twenty pieces, bistro sets at twenty.</p></details>
         <details><summary>Can we order samples first?</summary><p>Yes. Samples ship in seven to twelve days and the cost is credited against orders above twenty sets. Swatch cards are free.</p></details>
@@ -264,20 +305,30 @@
 
 <div id="contact">
   <section style="padding-top:0">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px)">
-      <div>
-        <h2>Tell us what you are furnishing.</h2>
-        <p class="lede">Send the market, the look and the volume. A designer answers within one business day with a shortlist and a rendering.</p>
-        <div class="t-scroll" style="margin-top:28px"><table class="t">
-          <tr><th>Email</th><td>sales@aurelle-outdoor.com</td></tr>
-          <tr><th>WhatsApp / WeChat</th><td>+86 138 0000 0000</td></tr>
-          <tr><th>Telephone</th><td>+86 757 2928 0000</td></tr>
-          <tr><th>Showroom</th><td>Lecong, Shunde, Foshan, Guangdong</td></tr>
-          <tr><th>Nearest ports</th><td>Nansha, Shekou — 60 to 90 minutes</td></tr>
-          <tr><th>Reply time</th><td>One business day, Monday to Saturday</td></tr>
-        </table></div>
-      </div>
-      <div><form class="form" data-rfq>
+    <div class="wrap">
+      <h2 data-t="sec.contact">Tell us what you are furnishing.</h2>
+      <div class="contact-grid">
+        <div>
+          <p class="lede">Send the market, the look and the volume. A designer answers within one business day with a shortlist and a rendering.</p>
+          <div class="team">
+            <img src="assets/d-team.webp" alt="Lina Chen, export manager at AURELLE">
+            <div>
+              <h3 style="font-size:20px">Lina Chen</h3>
+              <p class="small" style="margin-top:4px">Export manager · English and German</p>
+              <p class="small" style="margin-top:10px">sales@aurelle-outdoor.com<br>+86 757 2928 0000</p>
+              <div class="qr-row">
+                <img src="assets/d-wa-qr.webp" alt="WhatsApp QR code for AURELLE export team">
+                <span class="small">Scan to open WhatsApp<br>with Lina directly</span>
+              </div>
+            </div>
+          </div>
+          <div class="t-scroll" style="margin-top:26px"><table class="t" style="margin-top:0">
+            <tr><th>Showroom</th><td>Lecong, Shunde, Foshan, Guangdong</td></tr>
+            <tr><th>Nearest ports</th><td>Nansha, Shekou — 60 to 90 minutes</td></tr>
+            <tr><th>Reply time</th><td>One business day, Monday to Saturday</td></tr>
+          </table></div>
+        </div>
+        <div><form class="form" data-rfq>
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
         <input type="hidden" name="subject" value="AURELLE catalogue request">
         <div class="full"><label>Name</label><input type="text" name="name" required></div>
@@ -289,6 +340,7 @@
         <button type="submit">Send request</button>
         <div class="form-ok">Thank you. A designer replies within one business day.</div>
       </form></div>
+      </div>
     </div>
   </section>
 </div>
@@ -320,7 +372,7 @@
       </div>
       <div>
         <h4>For buyers</h4>
-        <a href="contact.html">Request the catalogue</a>
+        <a href="catalogue.html">Download catalogue (PDF)</a>
         <a href="trade.html">OEM / ODM</a>
         <a href="contact.html">Book a showroom visit</a>
         <a href="contact.html">WhatsApp us</a>
@@ -328,6 +380,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Foshan Aurelle Outdoor Living Co., Ltd.</span>
+      <span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
       <span>Site by Shayna Studio</span>
     </div>
   </div>
@@ -387,6 +440,59 @@ if (op) {
   lb.querySelector('.lb-next').addEventListener('click',()=>show(idx+1));
   document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);});
 })();
+</script>
+<script>
+// 磁吸按钮：鼠标进入 90px 内轻微跟随
+document.querySelectorAll('[data-magnetic]').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=e.clientX-(r.left+r.width/2), y=e.clientY-(r.top+r.height/2);
+    if(Math.hypot(x,y)>Math.max(r.width,r.height)/2+70) return;
+    btn.style.transform='translate('+(x*0.32)+'px,'+(y*0.32)+'px)';
+  });
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+});
+// 导航滑动指示块
+const navEl=document.querySelector('.nav');
+if(navEl){
+  const ind=document.createElement('span');ind.className='nav-ind';navEl.appendChild(ind);
+  const move=el=>{if(!el)return;const r=el.getBoundingClientRect(),nr=navEl.getBoundingClientRect();
+    ind.style.transform='translateX('+(r.left-nr.left)+'px)';ind.style.width=r.width+'px';ind.style.opacity='1';};
+  navEl.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',()=>move(a)));
+  navEl.addEventListener('mouseleave',()=>move(navEl.querySelector('.act')||navEl.querySelector('a')));
+  window.addEventListener('scroll',()=>{const act=navEl.querySelector('.act');if(act)move(act);},{passive:true});
+  move(navEl.querySelector('.act')||navEl.querySelector('a'));
+}
+// 视频位：放大海报（正式站替换为嵌入播放器）
+document.querySelectorAll('.video-card').forEach(v=>v.addEventListener('click',()=>{const im=v.querySelector('img');if(im)im.click();}));
+// 英/西切换（西语覆盖导航与首屏/标题示意）
+const ES={
+ 'nav.home':'Inicio','nav.collection':'Colección','nav.craft':'Artesanía','nav.factory':'Fábrica',
+ 'nav.projects':'Proyectos','nav.trade':'Mayoristas','nav.about':'Empresa','nav.quote':'Pedir catálogo',
+ 'hero.h1':'Muebles para las horas que pasas al aire libre.',
+ 'hero.p':'Ratán tejido a mano y aluminio lacado, fabricado en nuestros propios talleres en Shunde y enviado a jardinerías y hoteles en sesenta países.',
+ 'hero.cta1':'Pedir el catálogo','hero.cta2':'Ver la colección',
+ 'sec.collection':'Cinco familias, un taller.','sec.craft':'El tejido es el argumento.',
+ 'sec.factory':'El taller donde se fabrica tu pedido.','sec.projects':'Muebles que ya viven fuera.',
+ 'sec.trade':'Condiciones de un vistazo.','sec.pack':'Embalaje y carga de contenedor.',
+ 'sec.about':'Empezamos con un bastidor.','sec.quality':'Hecho para sol, sal y auditorías.',
+ 'sec.faq':'Preguntas reales de compradores.','sec.contact':'Cuéntanos qué vas a amueblar.',
+ 'cta.quote':'Pedir precio','cta.cat':'El catálogo 2026, cinco familias.'
+};
+let lang=localStorage.getItem('aurelle-lang')||'en';
+const langBtn=document.getElementById('langBtn');
+function applyLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const k=el.dataset.t;
+    if(!el.dataset.en) el.dataset.en=el.textContent;
+    el.textContent=(l==='es'&&ES[k])?ES[k]:el.dataset.en;
+  });
+  if(langBtn) langBtn.textContent=(l==='es')?'EN':'ES';
+  try{localStorage.setItem('aurelle-lang',l);}catch(e){}
+}
+if(langBtn) langBtn.addEventListener('click',()=>{lang=(lang==='es')?'en':'es';applyLang(lang);});
+if(lang==='es') applyLang('es');
 </script>
 </body>
 </html>
