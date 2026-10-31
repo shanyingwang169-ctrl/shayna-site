@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.com/lifestyle/</loc><priority>1.0</priority></url>
-  <url><loc>https://example.com/lifestyle/products.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/product-riviera.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/about.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/factory.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/quality.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/projects.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/oem-odm.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/contact.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/faq.html</loc><priority>0.8</priority></url>
-  <url><loc>https://example.com/lifestyle/downloads.html</loc><priority>0.8</priority></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/collection.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/craft.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/factory.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/projects.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/trade.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/about.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/quality.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/contact.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/faq.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/product-riviera.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/product-dining.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/product-lounger.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/product-umbrella.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/product-bistro.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/catalogue.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/privacy.html</loc><changefreq>monthly</changefreq></url>
+<url><loc>https://shanyingwang169-ctrl.github.io/shayna-site/lifestyle/terms.html</loc><changefreq>monthly</changefreq></url>
 </urlset>
