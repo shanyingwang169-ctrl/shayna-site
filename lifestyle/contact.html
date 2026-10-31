@@ -16,15 +16,16 @@
 </head>
 <body><header class="top">
   <div class="wrap top-in">
-    <a class="wordmark" href="index.html">AURELLE</a>
+    <a class="wordmark" href="index.htmlindex.html">AURELLE</a>
     <nav class="nav">
-      <a href="collection.html">Collection</a>
-      <a href="craft.html">Craft</a>
-      <a href="factory.html">Factory</a>
-      <a href="projects.html">Projects</a>
-      <a href="trade.html">Trade</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="quote">Request catalogue</a>
+      <a href="index.htmlindex.html">Home</a>
+      <a href="index.html#collection">Collection</a>
+      <a href="index.html#craft">Craft</a>
+      <a href="index.html#factory">Factory</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#trade">Trade</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact" class="quote">Request catalogue</a>
     </nav>
   </div>
 </header>
@@ -51,7 +52,7 @@
       </div>
       <div>
         <h2 style="font-size:clamp(22px,2.4vw,30px)">Send a request</h2>
-        <form class="form" id="rfq">
+        <form class="form" data-rfq>
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
         <input type="hidden" name="subject" value="AURELLE catalogue request">
         <div class="full"><label>Name</label><input type="text" name="name" required></div>
@@ -61,7 +62,7 @@
         <div><label>Volume (sets or containers)</label><input type="text" name="qty"></div>
         <div class="full"><label>What are you furnishing?</label><textarea name="message" placeholder="Balcony program, hotel terrace, garden retail — tell us the market and the look."></textarea></div>
         <button type="submit">Send request</button>
-        <div class="form-ok" id="ok">Thank you. A designer replies within one business day.</div>
+        <div class="form-ok">Thank you. A designer replies within one business day.</div>
       </form>
       </div>
     </div>
@@ -116,16 +117,28 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
 }), {threshold:.08});
 document.querySelectorAll('.rise').forEach(el => io.observe(el));
-const rfq = document.getElementById('rfq');
-if (rfq) rfq.addEventListener('submit', async e => {
+document.querySelectorAll('form[data-rfq]').forEach(rfq => rfq.addEventListener('submit', async e => {
   e.preventDefault();
-  const f = e.target, ok = document.getElementById('ok');
+  const f = e.target, ok = f.querySelector('.form-ok');
   if (f.access_key.value === 'YOUR_WEB3FORMS_KEY') { ok.style.display='block'; f.reset(); return; }
   try {
     const r = await fetch('https://api.web3forms.com/submit', {method:'POST', body:new FormData(f)});
     if (r.ok) { ok.style.display='block'; f.reset(); } else alert('Submission failed, please email sales@aurelle-outdoor.com');
   } catch { alert('Network error, please email sales@aurelle-outdoor.com'); }
-});
+}));
+// 一页式：滚动高亮当前板块
+const op = document.querySelector('.onepage');
+if (op) {
+  const links = [...document.querySelectorAll('.nav a')];
+  const spy = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) links.forEach(a => {
+      const h = a.getAttribute('href');
+      a.classList.toggle('act', h === '#' + en.target.id || h === 'index.html#' + en.target.id);
+    });
+  }), {rootMargin:'-35% 0px -55% 0px'});
+  ['home','collection','craft','factory','projects','trade','about','quality','faq','contact']
+    .map(id => document.getElementById(id)).filter(Boolean).forEach(s => spy.observe(s));
+}
 </script>
 <script>
 (function(){
